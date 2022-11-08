@@ -20,9 +20,7 @@ export (bool) var downMov = false
 signal player_fired_bullet(bullet, position, direction)
 
 #export (PackedScene) var Bullet
-onready var end_of_gun = $Weapon/EndOfGun
-onready var gun_direction = $Weapon/GunDirection
-onready var attack_cooldown = $Weapon/AttackCooldown
+onready var weapon: Weapon = $Weapon
 onready var collision_shape = $CollisionShape2D
 onready var anim_pl = $AnimationPlayer
 #onready var team = $Team
@@ -36,16 +34,10 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("rightClick"):
-		shoot()
-
-func shoot():
-	if attack_cooldown.is_stopped():
-		var bullet_instance = bullet_scene.instance()
-		var direction = (gun_direction.global_position - end_of_gun.global_position).normalized()
-		emit_signal("player_fired_bullet", bullet_instance, end_of_gun.global_position, (get_global_mouse_position()-end_of_gun.global_position).normalized())
-		attack_cooldown.start()
-		
-		
+		weapon.shoot()
+	elif event.is_action_released("reload"):
+		weapon.start_reload()
+		weapon.end_reload()
 
 func _physics_process(delta: float) -> void:
 	#gun_direction.position = get_global_mouse_position()
@@ -99,6 +91,7 @@ func _physics_process(delta: float) -> void:
 	#end_of_gun.position.y=90*cos(200)
 	#gun_direction.look_at(get_global_mouse_position())
 	#look_at(get_global_mouse_position())
+
 
 
 #func set_camera_transform(camera_path: NodePath):
