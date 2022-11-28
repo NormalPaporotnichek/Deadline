@@ -1,6 +1,7 @@
 extends Control
 
-onready var camera = get_node("/root/Node/Camera2D")
+
+onready var GUI = get_node("/root/Node/GUI")
 
 var is_paused = false setget set_is_paused
 
@@ -12,6 +13,9 @@ func set_is_paused(value):
 	is_paused = value
 	get_tree().paused = is_paused
 	visible = is_paused
+	if GUI:
+		GUI.hide()
+		
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

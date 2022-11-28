@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Pushing-Magazine-Into-Gun-www.fesliyanstudios.com.mp3-70e44f8219f5fcb348bba6b37122e999.mp3str"
+
+[deps]
+
+source_file="res://assets/musc/Pushing-Magazine-Into-Gun-www.fesliyanstudios.com.mp3"
+dest_files=[ "res://.import/Pushing-Magazine-Into-Gun-www.fesliyanstudios.com.mp3-70e44f8219f5fcb348bba6b37122e999.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

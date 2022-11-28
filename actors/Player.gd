@@ -4,7 +4,7 @@ class_name Player
 
 #signal player_health_changed(new_health)
 #signal died
-const bullet_scene = preload("res://scenes/Bullet.tscn")
+const bullet_scene = preload("res://weapons/Bullet.tscn")
 
 
 export (int) var speed = 150
@@ -18,11 +18,15 @@ export (bool) var upMov = false
 export (bool) var downMov = false
 
 signal player_fired_bullet(bullet, position, direction)
+signal died
 
+onready var rng = RandomNumberGenerator.new()
 #export (PackedScene) var Bullet
-onready var weapon: Weapon = $Weapon
+onready var weapon_manager = $WeaponManager
+onready var walking_audio = $WalkingAudio
 onready var collision_shape = $CollisionShape2D
 onready var anim_pl = $AnimationPlayer
+onready var camera = $Camera2D
 #onready var team = $Team
 #onready var weapon_manager = $WeaponManager
 #onready var health_stat = $Health
@@ -30,14 +34,15 @@ onready var anim_pl = $AnimationPlayer
 
 func _ready() -> void:
 	anim_pl.play("defStand")
+	#weapon_manager.initialize()
 #	weapon_manager.initialize(team.team)
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_released("rightClick"):
-		weapon.shoot()
-	elif event.is_action_released("reload"):
-		weapon.start_reload()
-		weapon.end_reload()
+#func _unhandled_input(event: InputEvent) -> void:
+#	if event.is_action_released("rightClick"):
+		#weapon.shoot()
+	#elif event.is_action_released("reload"):
+	#	weapon.start_reload()
+	#	weapon.end_reload()
 
 func _physics_process(delta: float) -> void:
 	#gun_direction.position = get_global_mouse_position()
@@ -61,10 +66,12 @@ func _physics_process(delta: float) -> void:
 		defStand = true
 		leftMov = true
 		
+		
 	if Input.is_action_pressed("right"):
 		movement_direction.x = 1
 		defStand = true
 		rightMov = true
+		
 		
 	if defStand:
 		anim_pl.play("defStand")
@@ -85,6 +92,7 @@ func _physics_process(delta: float) -> void:
 		#if leftMov:
 	
 	movement_direction = movement_direction.normalized() 
+	walking_sound()
 	move_and_slide(movement_direction * speed * sprintSpeed)
 	defStand = false
 	#end_of_gun.position.x=90*sin(200)
@@ -94,10 +102,20 @@ func _physics_process(delta: float) -> void:
 
 
 
+func die():
+	emit_signal("died")
+	#queue_free()
+
 #func set_camera_transform(camera_path: NodePath):
 #	camera_transform.remote_path = camera_path
 
-
+func walking_sound():
+	rng.randomize()
+	#var effect = walking_audio.get_bus_effect(1, 0)
+	#effect.pan = 0.63
+	#walking_audio.pitch_scale = 0.6+
+	#walking_audio.play()
+	
 #func get_team() -> int:
 #	return team.team
 
@@ -109,6 +127,4 @@ func _physics_process(delta: float) -> void:
 #		die()
 
 
-#func die():
-#	emit_signal("died")
-#	queue_free()
+#

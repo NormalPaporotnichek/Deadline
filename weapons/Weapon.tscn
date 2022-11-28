@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/weapons.png" type="Texture" id=1]
+[ext_resource path="res://assets/weapon/weapons.png" type="Texture" id=1]
 [ext_resource path="res://weapons/Weapon.gd" type="Script" id=2]
-[ext_resource path="res://assets/shotRed.png" type="Texture" id=3]
+[ext_resource path="res://assets/weapon/shotRed.png" type="Texture" id=3]
+[ext_resource path="res://assets/musc/AR10-7.62x51-308-Close-Single-Gunshot-C-www.fesliyanstudios.com.mp3" type="AudioStream" id=4]
+[ext_resource path="res://weapons/Bullet.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "muzzle_flash"
@@ -74,19 +76,17 @@ tracks/1/keys = {
 
 [node name="Weapon" type="Node2D"]
 script = ExtResource( 2 )
+Bullet = ExtResource( 5 )
 
 [node name="EndOfGun" type="Position2D" parent="."]
-position = Vector2( 29, -3 )
-
-[node name="GunDirection" type="Position2D" parent="."]
-position = Vector2( 35, -3 )
+position = Vector2( 29, 0 )
 
 [node name="AttackCooldown" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
 
 [node name="WeaponSprite" type="Sprite" parent="."]
-position = Vector2( 15, 0 )
+position = Vector2( 15, 2 )
 scale = Vector2( 0.96875, 1 )
 texture = ExtResource( 1 )
 hframes = 15
@@ -103,3 +103,6 @@ texture = ExtResource( 3 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/muzzle_flash = SubResource( 1 )
 anims/reload = SubResource( 2 )
+
+[node name="ShootAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )

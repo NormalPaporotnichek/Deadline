@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Single-footstep-on-concrete-with-womans-heel-shoes-10-www.FesliyanStudios.com.mp3-a8bb2913538e5d7db7b55af3e3cbad53.mp3str"
+
+[deps]
+
+source_file="res://assets/musc/Single-footstep-on-concrete-with-womans-heel-shoes-10-www.FesliyanStudios.com.mp3"
+dest_files=[ "res://.import/Single-footstep-on-concrete-with-womans-heel-shoes-10-www.FesliyanStudios.com.mp3-a8bb2913538e5d7db7b55af3e3cbad53.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
