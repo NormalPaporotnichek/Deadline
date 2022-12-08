@@ -26,8 +26,10 @@ func _ready() -> void:
 	randomize()
 	GlobalSignals.connect(\"bullet_fired\", bullet_manager, \"handle_bullet_spawned\")
 	spawn_player()
-	var itm = item.instance()
-	scene_items.add_child(itm.create(\"Pistoletto\",\"ammoBox\",2,Vector2(-50,-50),player))
+	var itm1 = item.instance()
+	scene_items.add_child(itm1.create(\"Pistoletto\", \"ammoBox\", 2, Vector2(-50,-50), player))
+	var itm2 = item.instance()
+	scene_items.add_child(itm2.create(\"MashineGun\", \"ammoBox\", 2,Vector2(-70,-70), player))
 
 func spawn_player():
 	player = player_scene.instance()

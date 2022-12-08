@@ -5,13 +5,10 @@ onready var current_weapon: Weapon = $Pistoletto
 
 var weapons: Array = []
 
-
 func _ready() -> void:
 	weapons = get_children()
-
 	for weapon in weapons:
 		weapon.hide()
-
 	current_weapon.show()
 
 
@@ -32,12 +29,15 @@ func reload():
 func switch_weapon(weapon: Weapon):
 	if weapon == current_weapon:
 		return
-
 	current_weapon.hide()
 	weapon.show()
 	current_weapon = weapon
 	emit_signal("weapon_changed", current_weapon)
 
+func remove_weapon():
+	remove_child(current_weapon)
+	weapons.erase(current_weapon)
+	print(weapons)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if current_weapon.semi_auto and event.is_action_released("leftClick"):
@@ -49,3 +49,5 @@ func _unhandled_input(event: InputEvent) -> void:
 		switch_weapon(weapons[0])
 	elif event.is_action_released("weapon_2"):
 		switch_weapon(weapons[1])
+	elif event.is_action_released("throw"):
+		remove_weapon()

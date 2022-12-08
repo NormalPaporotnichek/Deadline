@@ -10,4 +10,9 @@ semi_auto = false
 wait_time = 0.05
 
 [node name="WeaponSprite" parent="." index="2"]
+rotation = -0.0523599
 frame = 102
+
+[node name="MuzzleFlash" parent="." index="3"]
+visible = true
+scale = Vector2( 0.095238, 0.157948 )

@@ -40,13 +40,14 @@ func _on_Item_body_exited(body):
 #		weapon.connect("weapon_ammo_changed", self, "add_current_ammo")
 
 func _input(event):
-	if event.is_action_pressed("E") and is_pickable_me:
+	if event.is_action_pressed("use") and is_pickable_me:
 		#set_weapon(player.weapon_manager.get_current_weapon())
 		#player.weapon_manager.connect("weapon_changed", self, "set_weapon")
-		var current_weapon = player.weapon_manager.get_current_weapon()
-		if current_weapon.name == group_type:
-			current_weapon.add_current_ammo(current_ammo)
-			get_parent().remove_child(self)
+		if item_type == "ammoBox":
+			var current_weapon = player.weapon_manager.get_current_weapon()
+			if current_weapon.name == group_type and current_weapon.current_ammo < current_weapon.max_ammo:
+				current_weapon.add_current_ammo(current_ammo)
+				get_parent().remove_child(self)
 		#weapon.add_current_ammo(current_ammo)
 		#player.pick() 
 # Called when the node enters the scene tree for the first time.

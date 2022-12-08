@@ -7,13 +7,11 @@ signal weapon_out_of_ammo
 
 
 export (PackedScene) var Bullet
-#export (String) var weapon_type
 export (int) var max_ammo
 export (bool) var semi_auto: bool = true
 
 var current_ammo: int = max_ammo setget add_current_ammo
 
-#onready var gui: Gui = $GUI
 onready var shoot_audio = $ShootAudio
 onready var end_of_gun = $EndOfGun
 onready var attack_cooldown = $AttackCooldown
