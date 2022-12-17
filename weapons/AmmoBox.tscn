@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/ammoBox.png" type="Texture" id=2]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Area2D
+
+export var ammo: int = 1
+var is_pickable_me: bool = false
+export var playerName: String = \"Player\"
+
+func body_entered(body):
+	if body.name == playerName:
+		is_pickable_me = true
+		
+func body_exited(body):
+	if body.name == playerName:
+		is_pickable_me = false
+	
+func _input(event):
+	var current_weapon = get_parent().get_parent().get_node(playerName).weapon_manager.get_current_weapon()
+	if event.is_action_pressed(\"use\") and is_pickable_me and (current_weapon is RangedWeapon) and (current_weapon.current_ammo < current_weapon.max_ammo):
+		current_weapon.add_current_ammo(ammo)
+		get_parent().remove_child(self)
+"
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24, 18.5 )
+
+[node name="Node" type="Area2D"]
+script = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -3.8147e-06, -1.00001 )
+scale = Vector2( 0.0688407, 0.069469 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -1.5 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="." to="." method="body_entered"]
+[connection signal="body_exited" from="." to="." method="body_exited"]

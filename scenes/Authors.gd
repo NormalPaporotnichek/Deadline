@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 
 # Declare member variables here. Examples:
@@ -6,15 +6,16 @@ extends Node
 # var b = "text"
 
 
-onready var bullet_manager: BulletManager  = $BulletManager
-onready var player:Player = $Player
-
-
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	randomize()
-	GlobalSignals.connect("bullet_fired", bullet_manager, "handle_bullet_spawned")
+func _ready():
+	pass # Replace with function body.
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Button_pressed():
+	get_tree().change_scene("res://scenes/Menu.tscn")
+	pass # Replace with function body.

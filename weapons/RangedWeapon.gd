@@ -1,16 +1,14 @@
 extends Node2D
-class_name Weapon
+class_name RangedWeapon
 
 
 signal weapon_ammo_changed(new_ammo_count)
 signal weapon_out_of_ammo
 
-
-export (PackedScene) var Bullet
+export (PackedScene) var Bullet =  preload("res://weapons/Bullet.tscn")
 export (int) var max_ammo
 export (bool) var semi_auto: bool = true
-
-var current_ammo: int = max_ammo setget add_current_ammo
+export var current_ammo: int = max_ammo setget add_current_ammo
 
 onready var shoot_audio = $ShootAudio
 onready var end_of_gun = $EndOfGun
@@ -22,13 +20,20 @@ onready var weapon_sprite = $WeaponSprite
 func _ready() -> void:
 	muzzle_flash.hide()
 	current_ammo = max_ammo
+	#GlobalSignals.emit_signal("ammo_view", true)
 
 func _process(delta):
 	look_at(get_global_mouse_position())
 
 func start_reload():
 	animation_player.play("reload")
-	
+
+func set_texture(path):
+	$WeaponSprite.texture = load(path)
+
+func get_texture():
+	return weapon_sprite
+
 func end_reload():
 	current_ammo = max_ammo
 	emit_signal("weapon_ammo_changed", current_ammo)
@@ -55,4 +60,3 @@ func shoot():
 		animation_player.play("muzzle_flash")
 		shoot_audio.play()
 		add_current_ammo(-1)
-		

@@ -4,9 +4,9 @@
 [ext_resource path="res://actors/Player.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Camera2D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://weapons/WeaponManager.gd" type="Script" id=4]
-[ext_resource path="res://assets/musc/Single-footstep-on-concrete-with-womans-heel-shoes-11-www.FesliyanStudios.com.mp3" type="AudioStream" id=5]
 [ext_resource path="res://weapons/MashineGun.tscn" type="PackedScene" id=6]
 [ext_resource path="res://weapons/Pistoletto.tscn" type="PackedScene" id=7]
+[ext_resource path="res://weapons/Katana.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=6]
 length = 0.8
@@ -64,10 +64,6 @@ extents = Vector2( 33, 42 )
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
-[node name="WalkingAudio" type="AudioStreamPlayer2D" parent="."]
-scale = Vector2( 4.25, 3.95 )
-stream = ExtResource( 5 )
-
 [node name="PlayerSprite" type="Sprite" parent="."]
 scale = Vector2( 4.25, 3.95 )
 texture = ExtResource( 1 )
@@ -90,3 +86,6 @@ script = ExtResource( 4 )
 [node name="Pistoletto" parent="WeaponManager" instance=ExtResource( 7 )]
 
 [node name="MashineGun" parent="WeaponManager" instance=ExtResource( 6 )]
+
+[node name="Katana" parent="WeaponManager" instance=ExtResource( 8 )]
+position = Vector2( 0, -1 )

@@ -15,27 +15,26 @@ script = ExtResource( 1 )
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -679.0
-margin_top = -510.0
-margin_right = 587.0
-margin_bottom = 333.0
-color = Color( 0.207843, 0.176471, 0.176471, 0.509804 )
+margin_left = -724.0
+margin_top = -524.0
+margin_right = 542.0
+margin_bottom = 319.0
+color = Color( 0.560784, 0.176471, 0.176471, 0.737255 )
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -5.0
-margin_top = -2.0
-margin_right = -5.0
-margin_bottom = -6.0
+margin_left = -77.0
+margin_top = -39.0
+margin_right = -77.0
+margin_bottom = -43.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-visible = false
 light_mask = 10
 margin_left = 428.0
-margin_top = 181.0
+margin_top = 208.0
 margin_right = 591.0
-margin_bottom = 415.0
+margin_bottom = 388.0
 size_flags_stretch_ratio = 0.0
 custom_constants/separation = 12
 
@@ -67,58 +66,6 @@ margin_right = 163.0
 margin_bottom = 180.251
 text = "Quit"
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 192.0
-margin_right = 163.0
-margin_bottom = 234.251
-text = "settings"
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer"]
-light_mask = 10
-margin_left = 412.0
-margin_top = 172.0
-margin_right = 607.0
-margin_bottom = 424.0
-size_flags_stretch_ratio = 0.0
-custom_constants/separation = 12
-
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer2"]
-margin_right = 195.0
-margin_bottom = 18.0
-size_flags_horizontal = 15
-size_flags_vertical = 5
-size_flags_stretch_ratio = 0.0
-text = "Settings"
-align = 1
-valign = 1
-
-[node name="HSlider" type="HSlider" parent="CenterContainer/VBoxContainer2"]
-margin_top = 30.0
-margin_right = 195.0
-margin_bottom = 72.0
-
-[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer2"]
-margin_top = 84.0
-margin_right = 195.0
-margin_bottom = 126.251
-text = "langueg"
-
-[node name="CheckButton" type="CheckButton" parent="CenterContainer/VBoxContainer2"]
-margin_top = 138.0
-margin_right = 195.324
-margin_bottom = 198.251
-text = "full screan"
-
-[node name="Button3" type="Button" parent="CenterContainer/VBoxContainer2"]
-margin_top = 210.0
-margin_right = 195.0
-margin_bottom = 252.251
-text = "back"
-
 [connection signal="pressed" from="CenterContainer/VBoxContainer/resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/back to menu" to="." method="_on_back_to_menu_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
-[connection signal="value_changed" from="CenterContainer/VBoxContainer2/HSlider" to="." method="_on_HSlider_value_changed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer2/CheckButton" to="." method="_on_CheckButton_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer2/Button3" to="." method="_on_Button3_pressed"]

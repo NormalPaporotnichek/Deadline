@@ -6,6 +6,8 @@ signal bloom_toggled(value)
 signal brightness_updated(value)
 signal fov_updated(value)
 signal mouse_sens_updated(value)
+signal ammo_view(value)
+
 
 
 func toggle_fullscreen(toggle):
