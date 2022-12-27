@@ -45,6 +45,6 @@ anims/attak = SubResource( 1 )
 scale = Vector2( 0.2, 1 )
 
 [node name="AttackCooldown" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 13.637
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

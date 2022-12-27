@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/Door.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/GUI.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://weapons/AmmoBox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/TileMap2.png" type="Texture" id=7]
 [ext_resource path="res://scenes/Scene1.gd" type="Script" id=8]
+[ext_resource path="res://test/Enemy.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Camera2D.tscn" type="PackedScene" id=10]
 
 [sub_resource type="TileSet" id=20]
 0/name = "TileMap2.png 0"
@@ -350,7 +352,7 @@ Shange weapon by 1-2-3"
 [node name="Items" type="Node" parent="."]
 
 [node name="Item" parent="Items" instance=ExtResource( 6 )]
-position = Vector2( 348, 328 )
+position = Vector2( 959, 168 )
 
 [node name="Item2" parent="Items" instance=ExtResource( 6 )]
 position = Vector2( 839, 146 )
@@ -363,7 +365,7 @@ position = Vector2( 96, 590 )
 sceneName = "Scene2"
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( 192, 108 )
+position = Vector2( 258, 281 )
 
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource( 4 )
@@ -376,3 +378,9 @@ format = 1
 tile_data = PoolIntArray( -1, 2, 0, -65536, 1, 0, -65528, 1, 0, -65520, 8, 0, 65535, 3, 0, 16, 7, 0, 131071, 3, 0, 196607, 3, 0, 131088, 7, 0, 262143, 3, 0, 196615, 9, 0, 196616, 9, 0, 196617, 9, 0, 196618, 9, 0, 196619, 9, 0, 196620, 9, 0, 196621, 9, 0, 327679, 3, 0, 262160, 7, 0, 393215, 3, 0, 458751, 3, 0, 393218, 9, 0, 393219, 9, 0, 393220, 9, 0, 393221, 9, 0, 393222, 9, 0, 393223, 9, 0, 393224, 9, 0, 393232, 7, 0, 524287, 3, 0, 589823, 3, 0, 524294, 9, 0, 524295, 9, 0, 524296, 9, 0, 524297, 9, 0, 524298, 9, 0, 524299, 9, 0, 524300, 9, 0, 524301, 9, 0, 524304, 7, 0, 655359, 3, 0, 720895, 3, 0, 655376, 7, 0, 786431, 3, 0, 851967, 4, 0, 786432, 5, 0, 786439, 5, 0, 786441, 5, 0, 786448, 6, 0 )
 
 [node name="GUI" parent="." instance=ExtResource( 2 )]
+
+[node name="Enemy" parent="." instance=ExtResource( 9 )]
+position = Vector2( 567, 351 )
+
+[node name="Camera2D" parent="." instance=ExtResource( 10 )]
+position = Vector2( 567, 351 )

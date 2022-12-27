@@ -3,6 +3,9 @@ extends KinematicBody2D
 var speed = 100
 var player = null
 var motion = Vector2.ZERO
+var bullet = preload("res://weapons/Bullet.tscn")
+
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -21,16 +24,35 @@ func _physics_process(delta):
 #func _process(delta):
 #	pass
 func _on_Area2D_body_entered(body):
-	print("Entered")
-	player = body
-
-
+	if body.name == "Player":
+		print("Entered")
+		player = body
 
 func _on_Area2D_body_exited(body):
-	print("Exited")
-	player = null
-	
-
+	if body.name == "Player":
+		print("Exited")
+		player = null
 
 func _on_Area2D2_body_entered(body):
-	get_tree().change_scene("res://test/death.tscn")
+	if body.name == "Bullet":
+		
+		$AnimatedSprite.hide()
+		#$CollisionShape2D.set_collision_mask_bit(0, false)
+		$Area2D.set_collision_mask_bit(0, false)
+		$Area2D2.set_collision_mask_bit(0, false)
+		$AnimatedSprite2.show()
+		$AnimatedSprite2.play("default")
+		#$AnimationPlayer.play()
+		speed = 0
+		
+	
+		$Area2D2.set_collision_mask_bit(0, false)
+		
+		print("COCK!")
+		$Timer.start()
+	#if body.name == "Player":
+	#	get_tree().change_scene("res://test/death.tscn")
+
+
+func _on_Timer_timeout():
+	queue_free()

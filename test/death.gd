@@ -32,4 +32,5 @@ func _on_Button_pressed():
 
 
 func _on_Button2_pressed():
-	SceneTransition.change_scene("res://Main.tscn")
+	Music.play()
+	SceneTransition.change_scene("res://scenes/Scene1.tscn")

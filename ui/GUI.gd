@@ -46,5 +46,5 @@ func format_seconds(time : float) -> String:
 
 
 func _on_Timer_timeout():
-	player.die()
+	#player.die()
 	pass

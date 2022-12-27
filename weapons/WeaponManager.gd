@@ -33,7 +33,6 @@ func _process(delta: float) -> void:
 func get_current_weapon():
 	return current_weapon
 
-
 func reload():
 	current_weapon.start_reload()
 
@@ -58,4 +57,5 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("weapon_2"):
 		switch_weapon(weapons[1])
 	if event.is_action_released("weapon_3"):
+		$Katana/AudioStreamPlayer2D.play()
 		switch_weapon(weapons[2])

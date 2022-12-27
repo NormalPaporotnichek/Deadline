@@ -14,4 +14,4 @@ func _process(delta):
 func attack():
 	attack_cooldown.start()
 	animation_player.play("attak")
-	audio.play()
+	$AudioStreamPlayer.play()

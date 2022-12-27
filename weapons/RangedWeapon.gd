@@ -27,6 +27,7 @@ func _process(delta):
 
 func start_reload():
 	animation_player.play("reload")
+	$reload.play()
 
 func set_texture(path):
 	$WeaponSprite.texture = load(path)

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/AR10-7.62x51-308-Close-Single-Gunshot-C-www.fesliyan
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
